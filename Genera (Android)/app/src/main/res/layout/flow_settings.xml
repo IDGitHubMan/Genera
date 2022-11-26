@@ -1,0 +1,764 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/divider1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:gravity="center"
+            android:labelFor="@id/flowCount"
+            android:text="@string/flowNumberHint"
+            android:textColor="#000000"
+            app:layout_constraintEnd_toStartOf="@id/divider1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <SeekBar
+            android:id="@+id/flowCount"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:max="49"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/divider1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:gravity="center"
+            android:labelFor="@id/flowSize"
+            android:text="@string/flowSize"
+            android:textColor="#000000"
+            app:layout_constraintEnd_toStartOf="@id/divider1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/flowCount" />
+
+        <SeekBar
+            android:id="@+id/flowSize"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:max="100"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/divider1"
+            app:layout_constraintTop_toBottomOf="@id/flowCount" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:gravity="center"
+            android:labelFor="@id/driftSpeed"
+            android:text="@string/maximumDrift"
+            android:textColor="#000000"
+            app:layout_constraintEnd_toEndOf="@id/divider1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/flowSize" />
+
+        <SeekBar
+            android:id="@+id/driftSpeed"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:max="100"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/divider1"
+            app:layout_constraintTop_toBottomOf="@id/flowSize" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:gravity="center"
+            android:labelFor="@id/flowColorMode"
+            android:text="@string/sparkleOptions"
+            android:textColor="#000000"
+            app:layout_constraintEnd_toStartOf="@id/divider1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/driftSpeed" />
+
+        <Spinner
+            android:id="@+id/flowColorMode"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/divider1"
+            app:layout_constraintTop_toBottomOf="@id/driftSpeed" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/uniformFlowColorGroup"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/flowColorMode">
+
+            <TextView
+                android:id="@+id/uniformRHint"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:gravity="center"
+                android:text="@string/red"
+                android:textColor="#000000"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <SeekBar
+                android:id="@+id/uniformRed"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:contentDescription="@string/flowR"
+                android:max="255"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/uniformRHint"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:gravity="center"
+                android:text="@string/green"
+                android:textColor="#000000"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/uniformRHint" />
+
+            <SeekBar
+                android:id="@+id/uniformGreen"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:contentDescription="@string/flowG"
+                android:max="255"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/uniformRHint"
+                app:layout_constraintTop_toBottomOf="@id/uniformRed" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:gravity="center"
+                android:text="@string/blue"
+                android:textColor="#000000"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/uniformGreen" />
+
+            <SeekBar
+                android:id="@+id/uniformBlue"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:contentDescription="@string/flowB"
+                android:max="255"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/uniformRHint"
+                app:layout_constraintTop_toBottomOf="@id/uniformGreen" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/horizontalGradient"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/uniformFlowColorGroup">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/divider3"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:gravity="center"
+                android:text="@string/xStartColor"
+                android:textColor="#000000"
+                app:layout_constraintBottom_toBottomOf="@id/startXBlue"
+                app:layout_constraintEnd_toStartOf="@id/divider3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/xRHint"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:gravity="center"
+                android:text="@string/red"
+                android:textColor="#000000"
+                app:layout_constraintStart_toEndOf="@id/divider3"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <SeekBar
+                android:id="@+id/startXRed"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:contentDescription="@string/h1R"
+                android:max="255"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/xRHint"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:gravity="center"
+                android:text="@string/green"
+                android:textColor="#000000"
+                app:layout_constraintStart_toEndOf="@id/divider3"
+                app:layout_constraintTop_toBottomOf="@id/startXRed" />
+
+            <SeekBar
+                android:id="@+id/startXGreen"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:contentDescription="@string/h1G"
+                android:max="255"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/xRHint"
+                app:layout_constraintTop_toBottomOf="@id/startXRed" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:gravity="center"
+                android:text="@string/blue"
+                android:textColor="#000000"
+                app:layout_constraintStart_toEndOf="@id/divider3"
+                app:layout_constraintTop_toBottomOf="@id/startXGreen" />
+
+            <SeekBar
+                android:id="@+id/startXBlue"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:contentDescription="@string/h1B"
+                android:max="255"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/xRHint"
+                app:layout_constraintTop_toBottomOf="@id/startXGreen" />
+
+            
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:gravity="center"
+                android:text="@string/xEndColor"
+                android:textColor="#000000"
+                app:layout_constraintBottom_toBottomOf="@id/endXBlue"
+                app:layout_constraintEnd_toStartOf="@id/divider3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/startXBlue" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:gravity="center"
+                android:text="@string/red"
+                android:textColor="#000000"
+                app:layout_constraintStart_toEndOf="@id/divider3"
+                app:layout_constraintTop_toBottomOf="@id/startXBlue" />
+
+            <SeekBar
+                android:id="@+id/endXRed"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:contentDescription="@string/h2R"
+                android:max="255"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/xRHint"
+                app:layout_constraintTop_toBottomOf="@id/startXBlue" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:gravity="center"
+                android:text="@string/green"
+                android:textColor="#000000"
+                app:layout_constraintStart_toEndOf="@id/divider3"
+                app:layout_constraintTop_toBottomOf="@id/endXRed" />
+
+            <SeekBar
+                android:id="@+id/endXGreen"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:contentDescription="@string/h2G"
+                android:max="255"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/xRHint"
+                app:layout_constraintTop_toBottomOf="@id/endXRed" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:gravity="center"
+                android:text="@string/blue"
+                android:textColor="#000000"
+                app:layout_constraintStart_toEndOf="@id/divider3"
+                app:layout_constraintTop_toBottomOf="@id/endXGreen" />
+
+            <SeekBar
+                android:id="@+id/endXBlue"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:contentDescription="@string/h2B"
+                android:max="255"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/xRHint"
+                app:layout_constraintTop_toBottomOf="@id/endXGreen" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/verticalGradient"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/horizontalGradient">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/divider2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:gravity="center"
+                android:text="@string/yStartColor"
+                android:textColor="#000000"
+                app:layout_constraintBottom_toBottomOf="@id/yStartB"
+                app:layout_constraintEnd_toStartOf="@id/divider2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/yRHint"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:gravity="center"
+                android:text="@string/red"
+                android:textColor="#000000"
+                app:layout_constraintStart_toEndOf="@id/divider2"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <SeekBar
+                android:id="@+id/yStartR"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:contentDescription="@string/v1R"
+                android:max="255"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/yRHint"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:gravity="center"
+                android:text="@string/green"
+                android:textColor="#000000"
+                app:layout_constraintStart_toEndOf="@id/divider2"
+                app:layout_constraintTop_toBottomOf="@id/yStartR" />
+
+            <SeekBar
+                android:id="@+id/yStartG"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:contentDescription="@string/v1G"
+                android:max="255"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/yRHint"
+                app:layout_constraintTop_toBottomOf="@id/yStartR" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:gravity="center"
+                android:text="@string/blue"
+                android:textColor="#000000"
+                app:layout_constraintStart_toEndOf="@id/divider2"
+                app:layout_constraintTop_toBottomOf="@id/yStartG" />
+
+            <SeekBar
+                android:id="@+id/yStartB"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:contentDescription="@string/v1B"
+                android:max="255"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/yRHint"
+                app:layout_constraintTop_toBottomOf="@id/yStartG" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:gravity="center"
+                android:text="@string/yEndColor"
+                android:textColor="#000000"
+                app:layout_constraintBottom_toBottomOf="@id/yEndB"
+                app:layout_constraintEnd_toStartOf="@id/divider2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/yStartB" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:gravity="center"
+                android:text="@string/red"
+                android:textColor="#000000"
+                app:layout_constraintStart_toEndOf="@id/divider2"
+                app:layout_constraintTop_toBottomOf="@id/yStartB" />
+
+            <SeekBar
+                android:id="@+id/yEndR"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:contentDescription="@string/v2R"
+                android:max="255"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/yRHint"
+                app:layout_constraintTop_toBottomOf="@id/yStartB" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:gravity="center"
+                android:text="@string/green"
+                android:textColor="#000000"
+                app:layout_constraintStart_toEndOf="@id/divider2"
+                app:layout_constraintTop_toBottomOf="@id/yEndR" />
+
+            <SeekBar
+                android:id="@+id/yEndG"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:contentDescription="@string/v2G"
+                android:max="255"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/yRHint"
+                app:layout_constraintTop_toBottomOf="@id/yEndR" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:gravity="center"
+                android:text="@string/blue"
+                android:textColor="#000000"
+                app:layout_constraintStart_toEndOf="@id/divider2"
+                app:layout_constraintTop_toBottomOf="@id/yEndG" />
+
+            <SeekBar
+                android:id="@+id/yEndB"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:contentDescription="@string/v2B"
+                android:max="255"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/yRHint"
+                app:layout_constraintTop_toBottomOf="@id/yEndG" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:gravity="center"
+            android:labelFor="@id/fieldMode"
+            android:text="@string/flowFieldSystem"
+            android:textColor="#000000"
+            app:layout_constraintEnd_toStartOf="@id/divider1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/verticalGradient" />
+
+        <Spinner
+            android:id="@+id/fieldMode"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/divider1"
+            app:layout_constraintTop_toBottomOf="@id/verticalGradient" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/noiseGroup"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fieldMode">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/divider4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:gravity="center"
+                android:labelFor="@id/resolution"
+                android:text="@string/resHint"
+                android:textColor="#000000"
+                app:layout_constraintEnd_toStartOf="@id/divider4"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <SeekBar
+                android:id="@+id/resolution"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:max="99"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/divider4"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:gravity="center"
+                android:labelFor="@id/fullRotation"
+                android:text="@string/rotation"
+                android:textColor="#000000"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/resolution" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/fullRotation"
+                android:layout_width="60dp"
+                android:layout_height="48dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/resolution"
+                tools:ignore="DuplicateSpeakableTextCheck" />
+
+            <TextView
+                android:id="@+id/xIncHint"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:gravity="center"
+                android:text="@string/xIncrementHint"
+                android:textColor="#000000"
+                app:layout_constraintEnd_toStartOf="@id/divider4"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fullRotation" />
+
+            <Spinner
+                android:id="@+id/xIncNum"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:spinnerMode="dialog"
+                app:layout_constraintStart_toEndOf="@id/divider4"
+                app:layout_constraintTop_toBottomOf="@id/fullRotation" />
+
+            <TextView
+                android:id="@+id/xMathHint"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:gravity="center"
+                android:text="@string/mathHint"
+                android:textColor="#000000"
+                app:layout_constraintStart_toEndOf="@id/xIncNum"
+                app:layout_constraintTop_toBottomOf="@id/fullRotation" />
+
+            <Spinner
+                android:id="@+id/xIncOrder"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:spinnerMode="dialog"
+                app:layout_constraintStart_toEndOf="@id/xMathHint"
+                app:layout_constraintTop_toBottomOf="@id/fullRotation" />
+
+            <TextView
+                android:id="@+id/yIncHint"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:gravity="center"
+                android:text="@string/yIncrementHint"
+                android:textColor="#000000"
+                app:layout_constraintEnd_toStartOf="@id/divider4"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/xIncHint" />
+
+            <Spinner
+                android:id="@+id/yIncNum"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:spinnerMode="dialog"
+                app:layout_constraintStart_toEndOf="@id/divider4"
+                app:layout_constraintTop_toBottomOf="@id/xIncNum" />
+
+            <TextView
+                android:id="@+id/yMathHint"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:gravity="center"
+                android:text="@string/mathHint"
+                android:textColor="#000000"
+                app:layout_constraintStart_toEndOf="@id/yIncNum"
+                app:layout_constraintTop_toBottomOf="@id/xMathHint" />
+
+            <Spinner
+                android:id="@+id/yIncOrder"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:spinnerMode="dialog"
+                app:layout_constraintStart_toEndOf="@id/yMathHint"
+                app:layout_constraintTop_toBottomOf="@id/xIncOrder" />
+
+            <TextView
+                android:textColor="#000000"
+                android:gravity="center"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:text="@string/noiseDynamics"
+                app:layout_constraintTop_toBottomOf="@id/yIncOrder"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/divider4"/>
+            <Spinner
+                android:id="@+id/noiseDynamicOptions"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                app:layout_constraintStart_toEndOf="@id/divider4"
+                app:layout_constraintTop_toBottomOf="@id/yIncOrder"
+                app:layout_constraintEnd_toEndOf="parent"/>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/roughGroup"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/noiseDynamicOptions"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/divider5"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.5"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:text="@string/roughNoseTiming"
+                    android:gravity="center"
+                    android:textColor="#000000"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/divider5"
+                    />
+                <SeekBar
+                    android:id="@+id/roughTime"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:max="10000"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/divider5"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:targetApi="o"
+                    tools:ignore="TooManyViews" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/pointGroup"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/noiseGroup">
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@id/pointGroup"
+            app:layout_constraintBottom_toBottomOf="@id/flowsBGA"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/divider1"
+            android:text="@string/background"
+            android:textColor="@color/black"/>
+        <TextView
+            android:id="@+id/flowsBGRHint"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:text="@string/red"
+            app:layout_constraintTop_toBottomOf="@id/pointGroup"
+            app:layout_constraintStart_toEndOf="@id/divider1"/>
+        <SeekBar
+            android:id="@+id/flowsBGR"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:max="255"
+            android:contentDescription="@string/backgroundR"
+            app:layout_constraintStart_toEndOf="@id/flowsBGRHint"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/pointGroup"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:text="@string/green"
+            app:layout_constraintTop_toBottomOf="@id/flowsBGR"
+            app:layout_constraintStart_toEndOf="@id/divider1"/>
+        <SeekBar
+            android:id="@+id/flowsBGG"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:max="255"
+            android:contentDescription="@string/backgroundG"
+            app:layout_constraintStart_toEndOf="@id/flowsBGRHint"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/flowsBGR"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:text="@string/blue"
+            app:layout_constraintTop_toBottomOf="@id/flowsBGG"
+            app:layout_constraintStart_toEndOf="@id/divider1"/>
+        <SeekBar
+            android:id="@+id/flowsBGB"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:max="255"
+            android:contentDescription="@string/backgroundB"
+            app:layout_constraintStart_toEndOf="@id/flowsBGRHint"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/flowsBGG"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:text="@string/alpha"
+            app:layout_constraintTop_toBottomOf="@id/flowsBGB"
+            app:layout_constraintStart_toEndOf="@id/divider1"/>
+        <SeekBar
+            android:id="@+id/flowsBGA"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:max="255"
+            android:contentDescription="@string/backgroundA"
+            app:layout_constraintStart_toEndOf="@id/flowsBGRHint"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/flowsBGB"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
