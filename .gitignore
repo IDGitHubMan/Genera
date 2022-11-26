@@ -1,0 +1,11 @@
+.idea/
+.gradle/
+.DS_Store
+/Processing/Genera/windows-amd64/
+/Processing/Genera/macos-x86-64/
+/Processing/Genera/macos-aarch64/
+*/.DS_Store
+*.gradle
+*/gradle
+*/gradle*
+*/gradlew*
