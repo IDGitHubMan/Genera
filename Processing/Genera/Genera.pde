@@ -50,7 +50,10 @@ void draw() {
       rectMode(CENTER);
       text("Nodes works by creating a set of objects each with a range, location, and a motion defined by a vector. As they move according to this vector, the system checks if any node falls within the range of another. If it does, draw a line. If the relation goes both ways, add a sparkle.", width/2, height/2, width/2, height/2);
     }
-  } else {
+  } else if (running == 1){
+    if (!cp5.isMouseOver()){
+      d.includeMouse = mousePressed;
+    }
     d.update();
     if (explanation) {
       fill(0, 128);
@@ -85,9 +88,11 @@ void draw() {
   if (d.fieldGenSystem == 0) {
     cp5.get(Group.class, "noise").show();
     cp5.get(Group.class, "points").hide();
+    cp5.get(Group.class,"touches").hide();
   } else {
     cp5.get(Group.class, "noise").hide();
     cp5.get(Group.class, "points").show();
+    cp5.get(Group.class,"touches").show();
   }
   if (d.colorMode == 0) {
     cp5.get(Group.class, "HorizontalGradient").hide();
@@ -132,33 +137,45 @@ void controlEvent(ControlEvent theControlEvent) {
 }
 
 void mousePressed() {
-  if (running == 0) {
-    if (g.touchBehavior == 0){
-      g.nodeCount += 1;
-      g.nodes.add(new Node(g,new PVector(mouseX,mouseY)));
-      cp5.get(Slider.class,"nodeCount").setValue(g.nodeCount);
-    }
-    else{
+  if (!cp5.isMouseOver()) {
+    if (running == 0) {
+      if (g.touchBehavior == 0) {
+        g.nodeCount += 1;
+        g.nodes.add(new Node(g, new PVector(mouseX, mouseY)));
+        cp5.get(Slider.class, "nodeCount").setValue(g.nodeCount);
+      } else if (g.touchBehavior == 3) {
+        for (Node n : g.nodes) {
+          n.range = random(0, 1);
+          n.vel = new PVector(random(-1, 1), random(-1, 1));
+        }
+      }
       touchStart = new PVector(mouseX, mouseY);
     }
   }
 }
 
 void mouseDragged() {
-  if (running == 0) {
-    if (g.touchBehavior == 1 || g.touchBehavior == 2) {
-      stroke(255);
-      line(touchStart.x, touchStart.y, mouseX, mouseY);
+  if (!cp5.isMouseOver()) {
+    if (running == 0) {
+      if (g.touchBehavior == 1 || g.touchBehavior == 2) {
+        stroke(255);
+        line(touchStart.x, touchStart.y, mouseX, mouseY);
+      }
     }
   }
 }
 
 void mouseReleased() {
-  if (running == 0) {
-    if (g.touchBehavior == 1){
-      PVector direction = new PVector(touchStart.x - mouseX, touchStart.y - mouseY);
-      PVector last = new PVector(mouseX,mouseY);
-      g.nodes.add(new Node(g,last,direction));
+  if (!cp5.isMouseOver()) {
+    if (running == 0) {
+      if (g.touchBehavior == 1) {
+        PVector direction = new PVector(touchStart.x - mouseX, touchStart.y - mouseY);
+        PVector last = new PVector(mouseX, mouseY);
+        g.nodes.add(new Node(g, last, direction));
+      } else if (g.touchBehavior == 2) {
+        PVector direction = new PVector(mouseX - touchStart.x, mouseY - touchStart.y);
+        g.nodes.add(new Node(g, touchStart, direction));
+      }
     }
   }
 }

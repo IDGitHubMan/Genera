@@ -97,8 +97,56 @@ class Drifter {
           orbDesired.mult(factor);
           acc.add(orbDesired);
         }
-        if (loc.x > width || loc.x < 0 || loc.y > height || loc.y < 0){
-          loc = new PVector(random(width),random(height));
+        if (loc.x > width || loc.x < 0 || loc.y > height || loc.y < 0) {
+          loc = new PVector(random(width), random(height));
+        }
+      }
+      if (parent.includeMouse) {
+        PVector mouse = PVector.sub(new PVector(mouseX, mouseY), loc);
+        if (parent.mouseType == 0) {
+          float factor = map(dist(mouseX, mouseY, loc.x, loc.y), 0, dist(0, 0, width, height), 5, 0);
+          mouse.normalize();
+          mouse.mult(factor);
+          acc.add(mouse);
+        } else if (parent.mouseType == 1) {
+          float factor = map(dist(mouseX, mouseY, loc.x, loc.y), 0, dist(0, 0, width, height), 5, 0);
+          mouse.normalize();
+          mouse.mult(factor);
+          acc.sub(mouse);
+        } else {
+          float orbTheta = atan((mouseY - loc.y) / (mouseX - loc.x));
+          float r = dist(mouseX, mouseY, loc.x, loc.y);
+          PVector target;
+          if (mouseX >= loc.x) {
+            target = new PVector(-r * cos(orbTheta + 0.01f) + mouseX, -r * sin(orbTheta + 0.01f) + mouseY);
+          } else {
+            target = new PVector(r * cos(orbTheta + 0.01f) + mouseX, r * sin(orbTheta + 0.01f) + mouseY);
+          }
+          PVector orbDesired = PVector.sub(target, loc);
+          float factor = map(dist(mouseX, mouseY, loc.x, loc.y), 0, dist(0, 0, width, height), 5, 0);
+          orbDesired.normalize();
+          orbDesired.mult(factor);
+          acc.add(orbDesired);
+        }
+        if (dist(mouseX, mouseY, loc.x, loc.y) <= 10) {
+          float x, y;
+          int choiceDim = (int) random(2);
+          int choiceEdge = (int) random(2);
+          if (choiceDim == 0) {
+            x = random(width);
+            if (choiceEdge == 0) {
+              loc = new PVector(x, 0);
+            } else {
+              loc = new PVector(x, height);
+            }
+          } else {
+            y = random(height);
+            if (choiceEdge == 0) {
+              loc = new PVector(0, y);
+            } else {
+              loc = new PVector(width, y);
+            }
+          }
         }
       }
     }
@@ -110,17 +158,17 @@ class Drifter {
     if (parent.colorMode == 0) {
       stroke(col);
     } else if (parent.colorMode == 1) {
-      stroke(lerpColor(color(parent.xGradStart), color(parent.xGradEnd), map(loc.x, 0, width, 0, 1)),255);
+      stroke(lerpColor(color(parent.xGradStart), color(parent.xGradEnd), map(loc.x, 0, width, 0, 1)), 255);
     } else if (parent.colorMode == 2) {
-      stroke(lerpColor(color(parent.yGradStart), color(parent.yGradEnd), map(loc.y, 0, height, 0, 1)),255);
+      stroke(lerpColor(color(parent.yGradStart), color(parent.yGradEnd), map(loc.y, 0, height, 0, 1)), 255);
     } else if (parent.colorMode == 3) {
       int c1 = color(lerpColor(color(parent.xGradStart), color(parent.xGradEnd), map(loc.x, 0, width, 0, 1)));
       int c2 = color(lerpColor(color(parent.yGradStart), color(parent.yGradEnd), map(loc.y, 0, height, 0, 1)));
-      stroke(lerpColor(c1, c2, 0.5f),255);
+      stroke(lerpColor(c1, c2, 0.5f), 255);
     } else if (parent.colorMode == 4) {
-      stroke(parent.uniform,255);
+      stroke(parent.uniform, 255);
     } else {
-      stroke(col,255);
+      stroke(col, 255);
     }
     point(loc.x, loc.y);
   }

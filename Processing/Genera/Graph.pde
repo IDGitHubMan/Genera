@@ -199,8 +199,17 @@ class Graph {
     cp5.getTab("NODES").bringToFront();
     cp5.addGroup("Touches")
       .setTab("NODES")
-      .setPosition(600,30)
-      .setSize(200,40);
+      .setPosition(600, 30)
+      .setSize(200, 40);
+    cp5.addScrollableList("touchBehavior")
+      .plugTo(this)
+      .addItem("Add", 0)
+      .addItem("Launch", 1)
+      .addItem("Shoot", 2)
+      .addItem("Readjust", 3)
+      .setValue(touchBehavior)
+      .setGroup("Touches")
+      .setPosition(20, 5);
     nodes = new ArrayList();
     for (int i = 0; i < nodeCount; i++) {
       nodes.add(new Node(this));
@@ -244,14 +253,13 @@ class Graph {
                 stroke(sparkCol, lineAlpha);
               } else if (sparkStyle == 1) {
                 stroke(lerpColor(n.nodeCol, n2.nodeCol, 0.5), lineAlpha);
-              } else if (sparkStyle == 2){
+              } else if (sparkStyle == 2) {
                 if (colorUniformity) {
                   stroke(allCol, lineAlpha);
                 } else {
                   stroke(n.nodeCol, lineAlpha);
                 }
-              }
-              else {
+              } else {
                 stroke(random(255), random(255), random(255), lineAlpha);
               }
               point((n.loc.x + n2.loc.x) / 2 + random(-dualSparkDisplacement, dualSparkDisplacement), (n.loc.y + n2.loc.y) / 2 + random(-dualSparkDisplacement, dualSparkDisplacement));

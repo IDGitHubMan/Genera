@@ -8,6 +8,8 @@ class DrifterCol {
   int ba = 0;
   boolean showPoints = true;
   int touchAction = 0;
+  int mouseType = 0;
+  boolean includeMouse = false;
   boolean touching = true;
 
   int fieldGenSystem = 1;
@@ -160,6 +162,17 @@ class DrifterCol {
       .setRange(1, 5)
       .setPosition(20, 5)
       .setSliderMode(Slider.FLEXIBLE);
+    cp5.addGroup("touches")
+      .setPosition(600,30)
+      .setSize(200,40)
+      .setTab("Flows");
+    cp5.addScrollableList("mouseType")
+      .setGroup("touches")
+      .plugTo(this)
+      .addItem("Attract",0)
+      .addItem("Repel",1)
+      .addItem("Orbit",2)
+      .setPosition(20,5);
     for (Point p : points) {
       String pLabelX = "Point" + (points.indexOf(p)+1) + "x";
       String pLabelY = "Point" + (points.indexOf(p)+1) + "y";

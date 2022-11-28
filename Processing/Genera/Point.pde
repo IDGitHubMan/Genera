@@ -11,9 +11,9 @@ class Point {
     type = t;
     pos = new PVector(x, y);
   }
-  
-  void display(){
+
+  void display() {
     strokeWeight(3);
-    point(pos.x,pos.y);
+    point(pos.x, pos.y);
   }
 }

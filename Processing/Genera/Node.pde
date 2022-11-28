@@ -8,25 +8,25 @@ class Node {
 
   Node(Graph p) {
     parent = p;
-    if (parent.colorUniformity){
+    if (parent.colorUniformity) {
       nodeCol = parent.allCol;
     }
     loc = new PVector(random(width), random(height));
   }
-  
-  Node(Graph p, PVector start){
+
+  Node(Graph p, PVector start) {
     parent = p;
     loc = start;
-    if (parent.colorUniformity){
+    if (parent.colorUniformity) {
       nodeCol = parent.allCol;
     }
   }
-  
-  Node(Graph p, PVector start, PVector drift){
+
+  Node(Graph p, PVector start, PVector drift) {
     parent = p;
     loc = start;
     vel = drift;
-    if (parent.colorUniformity){
+    if (parent.colorUniformity) {
       nodeCol = parent.allCol;
     }
   }
