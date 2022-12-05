@@ -11,26 +11,37 @@ int sliderValue = 100;
 Graph g;
 DrifterCol d;
 
+
+//Make the app open fullscreen. 
 void settings() {
   fullScreen();
-  //size(700,700);
 }
 
 void setup() {
+  //Object for controls
   cp5 = new ControlP5(this);
+  
+  //Object for managing Flows
   d = new DrifterCol(cp5);
+  
+  //Object for managing Nodes
   g = new Graph(cp5);
+  
+  //Add tab that displays digest of how each system works.
   cp5.getTab("default").activateEvent(true).setLabel("Explanation");
 }
 
+//Function to reset the Nodes
 void graph() {
   g = new Graph(cp5);
 }
 
+//function to reset Flows
 void drifterCol() {
   d = new DrifterCol(cp5);
 }
 
+//Draw loop to 
 void draw() {
   if (viewMode) {
     cp5.hide();
