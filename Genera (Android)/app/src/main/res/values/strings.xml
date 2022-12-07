@@ -93,9 +93,9 @@
     <string name="v2B">Vertical End Blue</string>
     <string name="sparkleColor">Sparkle Color Mode</string>
     <string-array name="pointTypes">
-        <item>Strong Attractor</item>
-        <item>Repeller</item>
-        <item>Weak Attractor</item>
+        <item>Attract</item>
+        <item>Repel</item>
+        <item>Orbit</item>
     </string-array>
     <string name="x">X</string>
     <string name="y">Y</string>
