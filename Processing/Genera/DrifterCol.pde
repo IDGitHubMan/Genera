@@ -17,7 +17,7 @@ class DrifterCol {
   int timeInterval = 5000;
   int colorMode = 1;
   color uniform = color(0, 119, 255);
-  color xGradStart = color(255, 255, 255);
+  color xGradStart = color(0, 255, 255);
   color xGradEnd = color(0, 255, 0);
   color yGradStart = color(255, 255, 0);
   color yGradEnd = color(255, 0, 0);
