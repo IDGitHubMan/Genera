@@ -678,6 +678,78 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/noiseGroup">
 
+            <TextView
+                android:id="@+id/pointsHint"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="@string/pointAmount"
+                android:gravity="center"
+                android:textColor="@color/black"/>
+
+            <SeekBar
+                android:id="@+id/pointAmount"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:min="1"
+                android:max="5"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@id/pointsHint"
+                app:layout_constraintEnd_toEndOf="parent"/>
+            
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/point1Group"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/pointAmount">
+
+                <TextView
+                    android:id="@+id/point1Hint"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="@id/point1Type"
+                    android:text="1"/>
+                
+                <Spinner
+                    android:id="@+id/point1Type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/point1Hint"/>
+                <SeekBar
+                    android:id="@+id/point1X"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/point1Type"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <SeekBar
+                    android:id="@+id/point1Y"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    app:layout_constraintTop_toBottomOf="@id/point1X"
+                    app:layout_constraintStart_toEndOf="@id/point1Type"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+                
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/point2Group"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/point1Group"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
         

@@ -113,4 +113,5 @@
     <string name="prefsName">com.IDDev.nodes.SharedPrefs</string>
     <string name="prefsNodesBGRed">Nodes Background Red</string>
     <string name="prefsNodesBGGreen">Nodes Background Green</string>
+    <string name="pointAmount">Point Amount</string>
 </resources>
