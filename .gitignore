@@ -1,6 +1,5 @@
 .idea/
 .gradle/
-.DS_Store
 /Processing/Genera/windows-amd64/
 /Processing/Genera/macos-x86-64/
 /Processing/Genera/macos-aarch64/
@@ -78,9 +77,6 @@ yarn-error.log*
 # Logs
 logs
 *.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
 firebase-debug.log*
 firebase-debug.*.log*
 
