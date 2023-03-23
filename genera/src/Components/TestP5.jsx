@@ -16,9 +16,6 @@ export default (props) => {
 		for (let s of points){
 			s.twinkle();
 		}
-		if (points[100].twinkling){
-			console.log(points[100].growth + " and "+ points[100].timing);
-		}
 	};
 
 	const windowResized = (p5) => {
