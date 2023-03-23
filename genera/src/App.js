@@ -1,9 +1,17 @@
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import NotFound from "./Components/NotFound";
 
 function App() {
-  return <NotFound />;
+  return (
+    <main>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
+    </main>
+  );
 }
 
 export default App;
