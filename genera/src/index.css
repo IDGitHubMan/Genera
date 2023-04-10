@@ -2,9 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+#defaultCanvas1 {
+  z-index: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 #defaultCanvas0 {
-    z-index: 0;
-    position: absolute;
-    top: 0;
-    left: 0;
+  z-index: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
