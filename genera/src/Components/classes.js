@@ -333,7 +333,7 @@ export class Flow {
       this.sketch.noise(
         this.sketch.floor(this.loc.x / this.resolution) * this.xInc,
         this.sketch.floor(this.loc.y / this.resolution) * this.yInc,
-        this.sketch.millis() / 10000
+        this.sketch.millis() / 1000
       ),
       0,
       1,
