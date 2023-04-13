@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import TestP5 from "./404Stars";
 export const NotFound = () => {
   return (
