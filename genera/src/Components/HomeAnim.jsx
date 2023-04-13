@@ -1,35 +1,43 @@
 import React from "react";
 import Sketch from "react-p5";
 import { FlowSet, Graph } from "./classes";
+import { RandGraphs } from "./classes";
 let g;
 let f;
+let r;
 let current = 0;
-export default (props) => {
+let time;
+export const Preview = (props) => {
   const setup = (p5, canvasParentRef) => {
-    p5.createCanvas(p5.windowWidth, 300).parent(canvasParentRef);
+    p5.createCanvas(p5.windowWidth, p5.windowHeight).parent(canvasParentRef);
     g = new Graph(p5);
     f = new FlowSet(p5);
+    r = new RandGraphs(p5);
+    time = p5.millis();
   };
 
   const draw = (p5) => {
-    console.log(current);
-    if (p5.frameCount % 200 == 0) {
+    if (p5.millis() - time >= 5000) {
+      f.randomize();
+      time = p5.millis();
       current += 1;
-      f = new FlowSet(p5);
     }
-    if (current >= 2) {
+    if (current >= 3) {
       current = 0;
     }
-    if (current == 0) {
+    if (current === 0) {
       g.update();
-    } else {
+    } else if (current === 1) {
       f.update();
+    } else if (current === 2) {
+      r.update();
     }
   };
 
   const windowResized = (p5) => {
-    p5.resizeCanvas(p5.windowWidth, 300);
+    p5.resizeCanvas(p5.windowWidth, p5.windowHeight);
   };
 
   return <Sketch setup={setup} draw={draw} windowResized={windowResized} />;
 };
+export default Preview;
