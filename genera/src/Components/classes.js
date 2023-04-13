@@ -171,7 +171,7 @@ export class Storm {
           insertPoints() {
             this.split = this.sketch.random(1);
             let behaviorChoice = this.sketch.int(this.sketch.random(3));
-            if (behaviorChoice == 0) {
+            if (behaviorChoice === 0) {
               if (this.loc.x > this.end.x) {
                 this.loc.x -= 1;
               } else if (this.loc.x < this.end.x) {
@@ -290,7 +290,7 @@ export class Graph {
           node2.loc.y
         );
         let a = this.sketch.map(distance, 0, node.range, 255, 0);
-        if (distance == 0) {
+        if (distance === 0) {
           this.sketch.noStroke();
         } else if (distance <= node.range) {
           this.sketch.stroke(
@@ -388,6 +388,17 @@ export class FlowSet {
       flow.update();
     }
   }
+
+  randomize() {
+    this.xInc = this.sketch.random(0.5);
+    this.yInc = this.sketch.random(0.5);
+    this.resolution = this.sketch.random(5);
+    for (let i = 0; i < this.flows.length; i++) {
+      this.flows[i].xInc = this.xInc;
+      this.flows[i].yInc = this.yInc;
+      this.flows[i].resolution = this.resolution;
+    }
+  }
 }
 
 export class RandGraphs {
@@ -427,7 +438,7 @@ export class RandGraphs {
   }
 
   update() {
-    this.sketch.background(0, 0, 66);
+    this.sketch.background(0);
     let rand = this.sketch.int(this.sketch.random(this.randomCounts.length));
     let gauss = this.sketch.int(
       this.sketch.constrain(
