@@ -1,7 +1,6 @@
 import React from "react";
 import Sketch from "react-p5";
-import { FlowSet, Graph } from "./classes";
-import { RandGraphs } from "./classes";
+import { FlowSet, Graph, NoiseWave } from "./classes";
 let g;
 let f;
 let r;
@@ -12,7 +11,7 @@ export const Preview = (props) => {
     p5.createCanvas(p5.windowWidth, p5.windowHeight).parent(canvasParentRef);
     g = new Graph(p5);
     f = new FlowSet(p5);
-    r = new RandGraphs(p5);
+    r = new NoiseWave(p5);
     time = p5.millis();
   };
 

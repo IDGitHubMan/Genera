@@ -282,6 +282,7 @@ export class Graph {
     this.sketch.background(0, 0, 0, 40);
     for (var node of this.nodeStore) {
       node.update();
+      this.sketch.strokeWeight(1);
       for (var node2 of this.nodeStore) {
         let distance = this.sketch.dist(
           node.loc.x,
@@ -502,6 +503,45 @@ export class RandGraphs {
       if (this.randomCounts[x] * 10 > this.sketch.height) {
         this.randomCounts[x] = 0;
       }
+    }
+  }
+}
+
+export class NoiseWave {
+  constructor(s) {
+    this.sketch = s;
+    this.size = 25;
+    this.noiseInc = 0.0;
+    this.colors = [];
+    this.cols = this.sketch.width / this.size;
+    for (let i = 0; i < this.cols; i++) {
+      this.colors[i] = this.sketch.color(
+        this.sketch.random(64),
+        this.sketch.random(128),
+        this.sketch.random(128, 255)
+      );
+    }
+  }
+
+  update() {
+    this.sketch.background(0, 60);
+    this.noiseInc += 0.001;
+    for (let i = 0; i < this.cols; i++) {
+      this.sketch.strokeWeight(23);
+      this.sketch.stroke(this.colors[i]);
+      this.sketch.line(
+        i * this.size,
+        0,
+        i * this.size,
+        (this.sketch.noise(i * 0.05, this.noiseInc) * this.sketch.height) / 2
+      );
+      this.sketch.line(
+        i * this.size,
+        (this.sketch.noise(i * 0.05, this.noiseInc) * this.sketch.height) / 2 +
+          50,
+        i * this.size,
+        this.sketch.height
+      );
     }
   }
 }
