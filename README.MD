@@ -58,7 +58,10 @@ Isn't it amazing how almost every aspect of reality can be reduced to a mathemat
 
 This whole project is meant to serve a few purposes for me:
 
-- 1.  Catalog the things I do in processing/p5js.
-  - Processing is really cool, and you can make some really great stuff with it. I have made tons of stuff that I eventually misplaced/lost so this is a record/museum.
-- 2. Allow me to learn/practice deeper concepts in both mathematics and programming.
-  - A lot of the things I'm attempting to do have been done before, or have libraries devoted to them, etc. That's great, and is a really useful thing. However, I'm challenging myself to learn the basics and systems behind them because in that way, I can have more fun with testing their limits. It's a lot easier to customize a PC when you know what each part is and what it does. This is the same idea.
+1.  Catalog the things I do in processing/p5js.
+
+- Processing is really cool, and you can make some really great stuff with it. I have made tons of stuff that I eventually misplaced/lost so this is a record/museum.
+
+2. Allow me to learn/practice deeper concepts in both mathematics and programming.
+
+- A lot of the things I'm attempting to do have been done before, or have libraries devoted to them, etc. That's great, and is a really useful thing. However, I'm challenging myself to learn the basics and systems behind them because in that way, I can have more fun with testing their limits. It's a lot easier to customize a PC when you know what each part is and what it does. This is the same idea.
