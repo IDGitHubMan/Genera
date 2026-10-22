@@ -1,0 +1,7 @@
+enum Boundary{
+    WRAP,BOUNCE,RESPAWN
+}
+
+enum Motion{
+  BROWNIAN,FLOCKING,FLOW_NOISE,FLOW_POINTS
+}

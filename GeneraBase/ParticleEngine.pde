@@ -42,7 +42,7 @@ class ParticleEngine{
   }
   void update(){
     for (Particle p:particles){
-      p.applyForce(PVector.random2D().normalize());
+      p.applyForce(PVector.random2D().mult(maxSpeed));
       p.vel.limit(maxSpeed);
       p.update();
       if (p.pos.x < 0 || p.pos.x > width){
