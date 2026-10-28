@@ -50,6 +50,23 @@ export default class ParticleEngine {
             break;
         }
       }
+      if (p.pos.y < 0 || p.pos.x > this.height) {
+        switch (this.boundary) {
+          case "WRAP":
+            p.pos.x = ((p.pos.y % this.height) + this.height) % this.height;
+            break;
+          case "BOUNCE":
+            // Need to make a constrain helper func
+            p.vel.y *= -1;
+            break;
+          case "RESPAWN":
+            p.pos = new Vector(
+              Math.random() * this.width,
+              Math.random() * this.height,
+            );
+            break;
+        }
+      }
     }
   }
 
