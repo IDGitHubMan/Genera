@@ -52,10 +52,10 @@ class ParticleEngine{
             break;
           case BOUNCE: 
             p.pos.x = constrain(p.pos.x,0,width);
-            p.vel.mult(-1);
+            p.vel.x *= -1;
             break;
           case RESPAWN: 
-            p.pos = PVector.random2D();
+            p.pos = new PVector(random(width),random(height));
             break;
         }
       }
@@ -66,10 +66,10 @@ class ParticleEngine{
             break;
           case BOUNCE: 
             p.pos.y = constrain(p.pos.y,0,height);
-            p.vel.mult(-1);
+            p.vel.y *= -1;
             break;
           case RESPAWN: 
-            p.pos = PVector.random2D();
+            p.pos = new PVector(random(width),random(height));
             break;
         }
       }
