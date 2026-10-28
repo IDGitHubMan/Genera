@@ -1,53 +1,55 @@
-enum Boundary {
-  Bounce,
-  Wrap,
-  Respawn,
-}
+import Vector from "./Vector";
 
-class Vector {
-  public x: number;
-  public y: number;
-  constructor(x: number, y: number) {
-    this.x = x;
-    this.y = y;
-  }
-
-  add(v: Vector) {}
-  sub(v: Vector) {}
-  mult(s: number) {}
-}
-
-class ParticleEngine {
+export default class ParticleEngine {
   public c1: number[];
   public c2: number[];
   public maxSpeed: number;
-  public b: Boundary;
+  public boundary: "WRAP" | "BOUNCE" | "RESPAWN";
+  public particles: Particle[];
+
   constructor() {
     this.c1 = [255, 255, 255];
     this.c2 = [0, 0, 0];
     this.maxSpeed = 4.0;
-    this.b = Boundary.Wrap;
+    this.particles = [];
+    this.boundary = "WRAP";
+    for (let i = 0; i < 100; i++) {
+      this.particles.push(new Particle(this));
+    }
   }
-  Particle = class {
-    public color: number[];
-    public pos: number[];
-    public vel: number[];
-    public acc: number[];
-    constructor(public superThis: ParticleEngine) {
-      this.color = [255, 255, 255];
-      this.pos = [0, 0];
-      this.vel = [0, 0];
-      this.acc = [0, 0];
-    }
 
-    applyForce(force: number[]) {
-      let f = [...force];
-      this.acc[0] += f[0];
-      this.acc[1] += f[1];
+  update() {
+    for (let p of this.particles) {
+      let angle = Math.random() * Math.PI * 2;
+      p.applyForce(new Vector(Math.acos(angle), Math.asin(angle)));
+      p.update();
     }
+  }
+}
 
-    update() {
-      this.vel[0] += this.acc[0];
-    }
-  };
+class Particle {
+  public color: number[];
+  public pos: Vector;
+  public vel: Vector;
+  public acc: Vector;
+  public engine: ParticleEngine;
+  constructor(e: ParticleEngine) {
+    this.color = [255, 255, 255];
+    this.pos = new Vector(0, 0);
+    this.vel = new Vector(0, 0);
+    this.acc = new Vector(0, 0);
+    this.engine = e;
+  }
+
+  applyForce(force: Vector) {
+    let f = force.copy();
+    this.acc.add(f);
+  }
+
+  update() {
+    this.vel.add(this.acc);
+    this.vel.limit(this.engine.maxSpeed);
+    this.pos.add(this.vel);
+    this.acc.mult(0);
+  }
 }
