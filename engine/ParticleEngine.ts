@@ -6,13 +6,17 @@ export default class ParticleEngine {
   public maxSpeed: number;
   public boundary: "WRAP" | "BOUNCE" | "RESPAWN";
   public particles: Particle[];
+  public width: number;
+  public height: number;
 
-  constructor() {
+  constructor(w: number, h: number) {
     this.c1 = [255, 255, 255];
     this.c2 = [0, 0, 0];
     this.maxSpeed = 4.0;
     this.particles = [];
     this.boundary = "WRAP";
+    this.width = w;
+    this.height = h;
     for (let i = 0; i < 100; i++) {
       this.particles.push(new Particle(this));
     }
@@ -29,6 +33,23 @@ export default class ParticleEngine {
     this.BrownianMove();
     for (let p of this.particles) {
       p.update();
+      if (p.pos.x < 0 || p.pos.x > this.width) {
+        switch (this.boundary) {
+          case "WRAP":
+            p.pos.x = ((p.pos.x % this.width) + this.width) % this.width;
+            break;
+          case "BOUNCE":
+            // Need to make a constrain helper func
+            p.vel.x *= -1;
+            break;
+          case "RESPAWN":
+            p.pos = new Vector(
+              Math.random() * this.width,
+              Math.random() * this.height,
+            );
+            break;
+        }
+      }
     }
   }
 
@@ -52,7 +73,7 @@ class Particle {
   public engine: ParticleEngine;
   constructor(e: ParticleEngine) {
     this.color = [255, 255, 255];
-    this.pos = new Vector(0, 0);
+    this.pos = new Vector(Math.random() * e.width, Math.random() * e.height);
     this.vel = new Vector(0, 0);
     this.acc = new Vector(0, 0);
     this.engine = e;
