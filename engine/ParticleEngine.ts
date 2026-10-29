@@ -17,7 +17,7 @@ export default class ParticleEngine {
     this.boundary = "WRAP";
     this.width = w;
     this.height = h;
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 1000; i++) {
       this.particles.push(new Particle(this));
     }
   }
@@ -50,10 +50,10 @@ export default class ParticleEngine {
             break;
         }
       }
-      if (p.pos.y < 0 || p.pos.x > this.height) {
+      if (p.pos.y < 0 || p.pos.y > this.height) {
         switch (this.boundary) {
           case "WRAP":
-            p.pos.x = ((p.pos.y % this.height) + this.height) % this.height;
+            p.pos.y = ((p.pos.y % this.height) + this.height) % this.height;
             break;
           case "BOUNCE":
             // Need to make a constrain helper func
