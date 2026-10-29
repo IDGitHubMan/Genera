@@ -8,8 +8,12 @@ export default class ParticleEngine {
   public particles: Particle[];
   public width: number;
   public height: number;
+  public ctx: CanvasRenderingContext2D;
 
-  constructor(w: number, h: number) {
+  constructor(w: number, h: number, ctx: CanvasRenderingContext2D) {
+    this.ctx = ctx;
+    ctx.fillStyle = "rgb(0,0,0)";
+    ctx.fillRect(0, 0, w, h);
     this.c1 = [255, 255, 255];
     this.c2 = [0, 0, 0];
     this.maxSpeed = 4.0;
@@ -74,14 +78,14 @@ export default class ParticleEngine {
     }
   }
 
-  render(ctx: CanvasRenderingContext2D) {
-    ctx.fillStyle = "rgba(0,0,0,0.05)";
-    ctx.fillRect(0, 0, this.width, this.height);
+  render() {
+    this.ctx.fillStyle = "rgba(0,0,0,0.05)";
+    this.ctx.fillRect(0, 0, this.width, this.height);
     for (let p of this.particles) {
-      ctx.beginPath();
-      ctx.arc(p.pos.x, p.pos.y, 1, 0, Math.PI * 2);
-      ctx.fillStyle = `rgb(${p.color[0]},${p.color[1]},${p.color[2]})`;
-      ctx.fill();
+      this.ctx.beginPath();
+      this.ctx.arc(p.pos.x, p.pos.y, 1, 0, Math.PI * 2);
+      this.ctx.fillStyle = `rgb(${p.color[0]},${p.color[1]},${p.color[2]})`;
+      this.ctx.fill();
     }
   }
 }

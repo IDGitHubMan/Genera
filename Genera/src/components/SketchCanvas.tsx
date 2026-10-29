@@ -19,12 +19,12 @@ export default function SketchCanvas({}) {
       p.width = width;
       p.height = height;
     };
-    const p = new ParticleEngine(width, height);
+    const p = new ParticleEngine(width, height, ctx);
     resize();
 
     const animate = () => {
       p.update();
-      p.render(ctx);
+      p.render();
       animationFrameRef.current = requestAnimationFrame(animate);
     };
     window.addEventListener("resize", resize);
