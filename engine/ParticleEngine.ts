@@ -14,7 +14,7 @@ export default class ParticleEngine {
     this.c2 = [0, 0, 0];
     this.maxSpeed = 4.0;
     this.particles = [];
-    this.boundary = "WRAP";
+    this.boundary = "BOUNCE";
     this.width = w;
     this.height = h;
     for (let i = 0; i < 1000; i++) {
@@ -39,7 +39,7 @@ export default class ParticleEngine {
             p.pos.x = ((p.pos.x % this.width) + this.width) % this.width;
             break;
           case "BOUNCE":
-            // Need to make a constrain helper func
+            Math.min(Math.max(p.pos.x, 0), this.width);
             p.vel.x *= -1;
             break;
           case "RESPAWN":
@@ -56,7 +56,7 @@ export default class ParticleEngine {
             p.pos.y = ((p.pos.y % this.height) + this.height) % this.height;
             break;
           case "BOUNCE":
-            // Need to make a constrain helper func
+            Math.min(Math.max(p.pos.y, 0), this.height);
             p.vel.y *= -1;
             break;
           case "RESPAWN":
