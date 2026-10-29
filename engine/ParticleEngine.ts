@@ -22,9 +22,13 @@ export default class ParticleEngine {
     }
   }
 
+  random() {
+    return Math.random();
+  }
+
   BrownianMove() {
     for (let p of this.particles) {
-      let angle = Math.random() * Math.PI * 2;
+      let angle = this.random() * Math.PI * 2;
       p.applyForce(new Vector(Math.cos(angle), Math.sin(angle)));
     }
   }
@@ -44,8 +48,8 @@ export default class ParticleEngine {
             break;
           case "RESPAWN":
             p.pos = new Vector(
-              Math.random() * this.width,
-              Math.random() * this.height,
+              this.random() * this.width,
+              this.random() * this.height,
             );
             break;
         }
@@ -61,8 +65,8 @@ export default class ParticleEngine {
             break;
           case "RESPAWN":
             p.pos = new Vector(
-              Math.random() * this.width,
-              Math.random() * this.height,
+              this.random() * this.width,
+              this.random() * this.height,
             );
             break;
         }
@@ -90,7 +94,7 @@ class Particle {
   public engine: ParticleEngine;
   constructor(e: ParticleEngine) {
     this.color = [255, 255, 255];
-    this.pos = new Vector(Math.random() * e.width, Math.random() * e.height);
+    this.pos = new Vector(e.random() * e.width, e.random() * e.height);
     this.vel = new Vector(0, 0);
     this.acc = new Vector(0, 0);
     this.engine = e;
